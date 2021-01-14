@@ -6,6 +6,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.view.View;
 
@@ -17,12 +18,16 @@ public class MainActivity extends AppCompatActivity {
 
     private AnotacaoPreferencias preferencias;
     private EditText editAnotacao;
+    private ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        logo = findViewById(R.id.logo);
         editAnotacao = findViewById(R.id.editAnotacao);
         preferencias = new AnotacaoPreferencias(getApplicationContext());
 
@@ -41,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(view, "Anotação salva com sucesso!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
                 }
+            }
+        });
+
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Desenvolvido por Lucas Vieira  =)", Toast.LENGTH_SHORT).show();
             }
         });
 
